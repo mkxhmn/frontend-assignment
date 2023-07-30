@@ -1,34 +1,73 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Front End Assignment
 
-## Getting Started
+build a customer portal which allows _customers to create an account_. It requires customer **to login** to the portal with a simple hardcoded username/password. The portal will **contain Header, Footer and body**. The header and footer are a **reusable component** that can be used by other front-end applications.
 
-First, run the development server:
+## pages
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+- [ ] login page
+- [ ] home page
+
+## reusable components
+
+- [ ] header
+- [ ] footer
+
+## requirements
+
+- [ ] implement fetch [user list API](https://reqres.in/api-docs/#/) in homepage
+- [ ] implement _guard_ prevent unauthorized access to _home page_
+- [ ] route success login to homepage
+- [ ] implement reusable _menu links_ in _Header_ and _Footer_
+
+# User Flow
+
+## Authorization
+
+```mermaid
+sequenceDiagram
+    participant L as Login
+    participant A as API
+    participant H as Homepage
+    
+    L->>+A: authorize
+    alt is authorize
+        A-->>L: authorized
+        L->>H: route to homepage
+    else is unauthorized
+        A-->>-L: unauthorized
+        L->>L: prompt error
+    end
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Fetch User
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```mermaid
+sequenceDiagram
+    participant H as Homepage
+    participant A as API
+    participant L as Login
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+    H->>+A: fetch user
+    alt is authorize
+        A-->>H: return data
+        H->>H: show user list
+    else is unauthorized
+        A-->>-H: unauthorized
+        H->>H: prompt error
+        H->>L: route to login page
+    end
+```
 
-## Learn More
+## Logout
 
-To learn more about Next.js, take a look at the following resources:
+```mermaid
+sequenceDiagram
+    participant H as Homepage
+    participant A as API
+    participant L as Login
+    
+    H->>+A: logout
+    A-->>-H: success
+    H->>L: route to login page
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
