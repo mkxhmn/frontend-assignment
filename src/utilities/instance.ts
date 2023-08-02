@@ -3,6 +3,11 @@ export type RequestProps = {
   config?: RequestInit;
 };
 
+type RequestResponseProps<T> = {
+  data?: T;
+  error?: Error;
+};
+
 type InstanceConfigurations = {
   basePath: string;
 };
@@ -12,11 +17,14 @@ export const instance =
   async <ResponseProps>(
     url: RequestProps["url"],
     config?: RequestProps["config"],
-  ) => {
+  ): Promise<RequestResponseProps<ResponseProps>> => {
     try {
       const response = await fetch(instanceConfigs.basePath + url, config);
-      return (await response.json()) as ResponseProps;
+
+      return { data: await response.json() };
     } catch (cause) {
-      return cause;
+      return {
+        error: cause as Error,
+      };
     }
   };
