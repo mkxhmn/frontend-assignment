@@ -14,7 +14,9 @@ export const privateProcedure = async <ResponseProps>(
 ) => {
   const isAuthorized = await validate();
   if (!isAuthorized) {
-    throw new Error("unauthorized");
+    return {
+      error: "unauthorized",
+    };
   }
 
   return await request<ResponseProps>(url, config);
