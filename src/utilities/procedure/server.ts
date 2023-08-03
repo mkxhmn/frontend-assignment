@@ -12,7 +12,10 @@ export const privateProcedure = async <ResponseProps>(
   url: RequestProps["url"],
   config?: RequestProps["config"],
 ) => {
-  validate();
+  const isAuthorized = await validate();
+  if (!isAuthorized) {
+    throw new Error("unauthorized");
+  }
 
   return await request<ResponseProps>(url, config);
 };
