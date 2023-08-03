@@ -32,7 +32,7 @@ export default async function HomePage() {
         <CardHeader>
           <CardTitle>Our Champions</CardTitle>
           <CardDescription>
-            we celebrate the invaluable support of our loyal customers, whose
+            We celebrate the invaluable support of our loyal customers, whose
             unwavering commitment is the very heartbeat of our success.
           </CardDescription>
         </CardHeader>
