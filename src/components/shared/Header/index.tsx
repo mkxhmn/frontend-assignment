@@ -7,7 +7,7 @@ type HeaderProps = {
 
 export const Header = (props: HeaderProps) => {
   return (
-    <header className="relative z-50 mx-auto max-w-7xl flex-none text-sm font-semibold leading-6 text-slate-900">
+    <header className="sticky top-0 z-50 mx-auto max-w-7xl flex-none text-sm font-semibold leading-6 text-slate-900 backdrop-blur">
       <nav
         aria-label="header navigation"
         className="max-w-container px-4 sm:px-6 lg:px-8"
