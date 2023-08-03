@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@hapi/iron": "^7.0.1",
+    "@radix-ui/react-label": "^2.0.2",
+    "@radix-ui/react-slot": "^1.0.2",
     "@tanstack/react-table": "^8.9.3",
     "@types/node": "20.4.5",
     "@types/react": "18.2.17",
