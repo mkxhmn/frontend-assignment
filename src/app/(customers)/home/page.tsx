@@ -1,4 +1,4 @@
-import { getUsers } from "@/actions";
+import { getUsers } from "@/actions/server";
 
 export default async function HomePage() {
   const users = await getUsers();
