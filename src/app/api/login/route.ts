@@ -1,5 +1,7 @@
 import { z } from "zod";
 import { NextResponse } from "next/server";
+import { cookies } from "next/headers";
+import { encrypt } from "@/utilities/secure";
 
 const schema = z
   .object({
@@ -34,6 +36,8 @@ export async function POST(request: Request) {
       },
     );
   }
+
+  cookies().set("token", await encrypt(validation.data.username));
 
   return NextResponse.json<LoginResponse>(
     { success: true },
