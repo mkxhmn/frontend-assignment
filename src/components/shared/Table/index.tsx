@@ -1,5 +1,13 @@
 "use client";
-
+import {
+  Table as TableContainer,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import {
   TableOptions,
   useReactTable,
@@ -7,59 +15,47 @@ import {
   getCoreRowModel,
 } from "@tanstack/react-table";
 
-type TableProps = Omit<TableOptions<any>, "getCoreRowModel">;
+type TableProps = { caption?: string } & Omit<
+  TableOptions<any>,
+  "getCoreRowModel"
+>;
 
-export const Table = (props: TableProps) => {
+export const Table = ({ caption, ...props }: TableProps) => {
   const table = useReactTable({
     getCoreRowModel: getCoreRowModel(),
     ...props,
   });
 
   return (
-    <table>
-      <thead>
+    <TableContainer>
+      {caption && <TableCaption>A list of your recent invoices.</TableCaption>}
+      <TableHeader>
         {table.getHeaderGroups().map((headerGroup) => (
-          <tr key={headerGroup.id}>
+          <TableRow key={headerGroup.id}>
             {headerGroup.headers.map((header) => (
-              <th key={header.id}>
+              <TableHead key={header.id}>
                 {header.isPlaceholder
                   ? null
                   : flexRender(
                       header.column.columnDef.header,
                       header.getContext(),
                     )}
-              </th>
+              </TableHead>
             ))}
-          </tr>
+          </TableRow>
         ))}
-      </thead>
-      <tbody>
+      </TableHeader>
+      <TableBody>
         {table.getRowModel().rows.map((row) => (
-          <tr key={row.id}>
+          <TableRow key={row.id}>
             {row.getVisibleCells().map((cell) => (
-              <td key={cell.id}>
+              <TableCell key={cell.id}>
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
-              </td>
+              </TableCell>
             ))}
-          </tr>
+          </TableRow>
         ))}
-      </tbody>
-      <tfoot>
-        {table.getFooterGroups().map((footerGroup) => (
-          <tr key={footerGroup.id}>
-            {footerGroup.headers.map((header) => (
-              <th key={header.id}>
-                {header.isPlaceholder
-                  ? null
-                  : flexRender(
-                      header.column.columnDef.footer,
-                      header.getContext(),
-                    )}
-              </th>
-            ))}
-          </tr>
-        ))}
-      </tfoot>
-    </table>
+      </TableBody>
+    </TableContainer>
   );
 };
