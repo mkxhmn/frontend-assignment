@@ -1,4 +1,4 @@
-import { privateProcedure } from "@/utilities/procedure";
+import { privateProcedure } from "@/utilities/procedure/server";
 
 type User = {
   id: number;
