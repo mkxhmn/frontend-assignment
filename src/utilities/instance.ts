@@ -21,6 +21,13 @@ export const instance =
     try {
       const response = await fetch(instanceConfigs.basePath + url, config);
 
+      // handles API error response
+      if (!response.ok) {
+        return {
+          error: await response.json(),
+        };
+      }
+
       return { data: await response.json() };
     } catch (cause) {
       return {
