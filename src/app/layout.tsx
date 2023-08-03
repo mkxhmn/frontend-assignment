@@ -14,7 +14,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`relative min-h-screen ${inter.className}`}>
+        {children}
+      </body>
     </html>
   );
 }
