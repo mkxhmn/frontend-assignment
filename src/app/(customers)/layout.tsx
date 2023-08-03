@@ -13,7 +13,7 @@ export default async function Layout({ children }: { children: ReactNode }) {
   return (
     <>
       <Header />
-      <main>{children}</main>
+      <main className="mx-auto max-w-7xl sm:px-6 lg:px-8">{children}</main>
       <Footer />
     </>
   );
