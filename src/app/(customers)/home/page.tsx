@@ -21,7 +21,7 @@ export default async function HomePage() {
   }
 
   return (
-    <div className="mt-8 grid grid-cols-1 gap-6 sm:mt-24 sm:grid-cols-2">
+    <div className="grid grid-cols-1 gap-6 sm:my-24 sm:grid-cols-2">
       <div className="flex items-center">
         <Hero
           title="Good to see you again!"
