@@ -15,11 +15,17 @@ const schema = z
     },
   );
 
+export type LoginSchema = z.infer<typeof schema>;
+export type LoginResponse = {
+  message?: string;
+  success?: boolean;
+};
+
 export async function POST(request: Request) {
   const validation = schema.safeParse(await request.json());
 
   if (!validation.success) {
-    return NextResponse.json(
+    return NextResponse.json<LoginResponse>(
       {
         message: validation.error.format()._errors.at(0),
       },
@@ -29,7 +35,7 @@ export async function POST(request: Request) {
     );
   }
 
-  return NextResponse.json(
+  return NextResponse.json<LoginResponse>(
     { success: true },
     {
       status: 200,
