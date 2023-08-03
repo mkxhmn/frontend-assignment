@@ -1,6 +1,6 @@
 import { privateProcedure } from "@/utilities/procedure/server";
 
-type User = {
+export type User = {
   id: number;
   email: "string";
   first_name: "string";

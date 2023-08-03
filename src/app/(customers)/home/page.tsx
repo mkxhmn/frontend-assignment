@@ -1,14 +1,8 @@
-import { getUsers } from "@/actions";
+import { getUsers } from "@/actions/server";
+import { UserTable } from "@/app/(customers)/home/_user-table";
 
 export default async function HomePage() {
   const users = await getUsers();
 
-  console.log("%o", users);
-
-  return (
-    <div>
-      hello homepage
-      <section>table goes here</section>
-    </div>
-  );
+  return <UserTable users={users?.data?.data!} />;
 }
