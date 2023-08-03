@@ -1,13 +1,12 @@
 import { cookies } from "next/headers";
+import { decrypt } from "@/utilities/secure";
 
-export const validate = () => {
-  const token = cookies().get("next-i18next");
-
-  console.log(token);
+export const validate = async () => {
+  const token = cookies().get("token");
 
   if (!token) {
-    throw Error("unauthorized");
+    return false;
   }
 
-  return true;
+  return (await decrypt(token?.value)) === process.env.DEMO_USERNAME;
 };
