@@ -13,12 +13,12 @@ type MenuLinkProps = {
 
 export const MenuLink = (props: MenuLinkProps) => {
   return (
-    <nav className="space-x-4">
+    <nav className="space-x-2 sm:space-x-4">
       {props.links.map((link) => (
         <Link
           className={`${
             props.disableSeparator ? "border-r-0" : "border-r"
-          } border-slate-900/15 text-sm font-semibold leading-6 text-slate-700 last-of-type:border-0 hover:text-blue-500 sm:pr-4`}
+          } border-slate-900/15 pr-2 text-sm font-semibold leading-6 text-slate-700 last-of-type:border-0 hover:text-blue-500 sm:pr-4`}
           key={link.label}
           href={link.href}
         >
