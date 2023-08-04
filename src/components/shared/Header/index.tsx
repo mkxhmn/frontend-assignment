@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button";
 import { MenuLink } from "@/components/shared/MenuLink";
+import { LogOut } from "./Logout";
 
 type HeaderProps = {
   links?: MenuLink[];
@@ -23,10 +23,7 @@ export const Header = (props: HeaderProps) => {
             </div>
           )}
           <div className="flex items-center pl-8">
-            <Button>
-              Log Out
-              <span aria-hidden="true">→</span>
-            </Button>
+            <LogOut />
           </div>
         </div>
       </nav>
