@@ -15,10 +15,10 @@ export const Header = (props: HeaderProps) => {
         <div className="relative flex items-center justify-between py-4">
           <span className="mr-8 flex cursor-crosshair items-center space-x-2 text-slate-900 ">
             <span className="text-2xl">👋</span>
-            <span className="hidden sm:flex">Customer Portal</span>
+            <span>Customer Portal</span>
           </span>
           {props?.links && (
-            <div className="ml-auto items-center sm:border-r sm:pr-8">
+            <div className="ml-auto hidden items-center sm:flex sm:border-r sm:pr-8">
               <MenuLink disableSeparator links={props.links} />
             </div>
           )}
