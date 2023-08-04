@@ -18,7 +18,7 @@ export const MenuLink = (props: MenuLinkProps) => {
         <Link
           className={`${
             props.disableSeparator ? "border-r-0" : "border-r"
-          } border-slate-900/15 pr-4 text-sm font-semibold leading-6 text-slate-700 last-of-type:border-0 hover:text-blue-500`}
+          } border-slate-900/15 text-sm font-semibold leading-6 text-slate-700 last-of-type:border-0 hover:text-blue-500 sm:pr-4`}
           key={link.label}
           href={link.href}
         >

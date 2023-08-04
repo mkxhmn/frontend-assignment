@@ -4,20 +4,20 @@ build a customer portal which allows _customers to create an account_. It requir
 
 ## pages
 
-- [ ] login page
-- [ ] home page
+- [x] login page
+- [x] home page
 
 ## reusable components
 
-- [ ] header
-- [ ] footer
+- [x] header
+- [x] footer
 
 ## requirements
 
-- [ ] implement fetch [user list API](https://reqres.in/api-docs/#/) in homepage
-- [ ] implement _guard_ prevent unauthorized access to _home page_
-- [ ] route success login to homepage
-- [ ] implement reusable _menu links_ in _Header_ and _Footer_
+- [x] implement fetch [user list API](https://reqres.in/api-docs/#/) in homepage
+- [x] implement _guard_ prevent unauthorized access to _home page_
+- [x] route success login to homepage
+- [x] implement reusable _menu links_ in _Header_ and _Footer_
 
 # User Flow
 
