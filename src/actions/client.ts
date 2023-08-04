@@ -7,3 +7,9 @@ export const login = async (params: LoginSchema) => {
     body: JSON.stringify(params),
   });
 };
+
+export const logout = async () => {
+  return await localProcedure<LoginResponse>("/api/logout", {
+    method: "POST",
+  });
+};
